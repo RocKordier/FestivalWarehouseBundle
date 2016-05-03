@@ -1,0 +1,31 @@
+{
+  "name": "rockordier/festivalwarehousebundle",
+  "type": "symfony-bundle",
+  "description": "Warehouse Bundle for ORO Platform - use case: festival",
+  "keywords": ["Oro", "OroPlatform", "OroCrm", "warehouse", "festival", "symfony"],
+  "homepage": "https://github.com/RocKordier/FestivalWarehouseBundle.git",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Eric Hertwig",
+      "homepage": "http://www.erichertwig.de"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packagist.orocrm.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.9",
+    "oro/platform": "1.x-dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "RocKordier\\Bundle\\FestivalWarehouseBundle\\": ""
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
