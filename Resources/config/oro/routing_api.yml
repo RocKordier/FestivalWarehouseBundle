@@ -1,0 +1,3 @@
+rockordier_festivalwarehouse__api:
+    resource:     "@FestivalWarehouseBundle/Controller/Api/Rest/GuestlistEntryController.php"
+    type:         rest

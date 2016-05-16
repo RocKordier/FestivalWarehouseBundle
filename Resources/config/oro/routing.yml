@@ -1,0 +1,9 @@
+rockordier_festivalwarehouse_bundle:
+    resource:     "@FestivalWarehouseBundle/Controller"
+    type:         annotation
+    prefix:       /waerehouse
+
+#rockordier_festivalwarehouse_dashboard:
+#    resource:     "@FestivalWarehouseBundle/Controller/Dashboard"
+#    type:         annotation
+#    prefix:       /waerehouse
