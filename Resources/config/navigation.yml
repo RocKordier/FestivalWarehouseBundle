@@ -1,0 +1,33 @@
+oro_menu_config:
+    items:
+        warehouse_tab:
+            label: 'rockordier.warehouse.entity_label'
+            uri: '#'
+            extras:
+                icon: icon-group
+                position: 10
+
+        warehouses_tab:
+            label: 'rockordier.warehouse.entity_plural_label'
+            route: 'rockordier_warehouse_index'
+            extras:
+                position: 5
+                routes: ['rockordier_rockordier_*']
+                description: 'rockordier.warehouse.description'
+
+    tree:
+        application_menu:
+            children:
+                warehouse_tab:
+                    children:
+                        warehouses_tab: ~
+
+        shortcuts:
+            children:
+                warehouses_tab: ~
+
+oro_titles:
+    orocrm_account_index: ~
+    orocrm_account_view: '%%warehouse%%'
+    orocrm_account_create: 'Create Waerehouse'
+    orocrm_account_update: '%%warehouse%% - Edit'
