@@ -10,7 +10,7 @@ use Oro\Bundle\MigrationBundle\Migration\QueryBag;
  * @SuppressWarnings(PHPMD.TooManyMethods)
  * @SuppressWarnings(PHPMD.ExcessiveClassLength)
  */
-class RocKordierWarehouseBundle implements Installation
+class RocKordierWarehouseBundleInstaller implements Installation
 {
     /**
      * {@inheritdoc}
