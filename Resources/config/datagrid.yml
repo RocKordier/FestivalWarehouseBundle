@@ -1,0 +1,66 @@
+datagrid:
+    warehouse-grid:
+        source:
+            acl_resource: rab_warehouse_view
+            type: orm
+            query:
+                select:
+                    - c.id
+                    - c.name
+                    - c.createdAt
+                    - c.updatedAt
+                from:
+                    - { table: FestivalWarehouseBundle:Warehouse, alias: c }
+        columns:
+            id:
+                label: id
+            title:
+                label: 'Warehouse title'
+            createdAt:
+                label: createdAt
+                frontend_type: date
+            updatedAt:
+                label: updatedAt
+                frontend_type: date
+        properties:
+            id: ~
+            update_link:
+                type: url
+                route: rockordier_warehouse_update
+                params:
+                    - id
+            view_link:
+                type: url
+                route: rockordier_warehouse_view
+                params:
+                    - id
+        sorters:
+            columns:
+                createdAt:
+                    data_name: c.createdAt
+                updatedAt:
+                    data_name: c.updatedAt
+            default:
+                model: ASC
+        filters:
+            columns:
+                createdAt:
+                    type: date
+                    data_name: c.createdAt
+                updatedAt:
+                    type: date
+                    data_name: c.updatedAt
+        actions:
+            view:
+                type:          navigate
+                label:         View
+                link:          view_link
+                icon:          eye-open
+                acl_resource:  rockordier_warehouse_view
+                rowAction:     true
+            update:
+                type:          navigate
+                label:         Update
+                link:          update_link
+                icon:          edit
+                acl_resource:  rockordier_warehouse_update
