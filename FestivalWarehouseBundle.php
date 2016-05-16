@@ -5,7 +5,7 @@ namespace RocKordier\Bundle\FestivalWarehouseBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class RocKordierFestivalWarehouseBundle
+ * Class FestivalWarehouseBundle
  *
  * @package RocKordier\Bundle\FestivalWarehouseBundle
  */
