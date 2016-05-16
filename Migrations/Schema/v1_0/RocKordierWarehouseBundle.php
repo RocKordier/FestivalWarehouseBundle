@@ -3,6 +3,7 @@
 namespace RocKordier\Bundle\FestivalWarehouseBundle\Migrations\Schema\v1_0;
 
 use Doctrine\DBAL\Schema\Schema;
+
 use Oro\Bundle\MigrationBundle\Migration\Installation;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
