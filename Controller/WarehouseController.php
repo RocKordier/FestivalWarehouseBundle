@@ -10,6 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use RocKordier\Bundle\FestivalWarehouseBundle\Entity\Warehouse;
+use RocKordier\Bundle\FestivalWarehouseBundle\Entity\Manager\WarehouseManager;
+
 /**
  * Class WarehouseController
  * @package RaB\Bundle\WarehouseBundle\Controller
@@ -22,14 +25,108 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class WarehouseController extends Controller
 {
     /**
-     * @Route("/", name="rockordier_festivalwarehouse_index")
+     * @Route("/", name="rockordier_warehouse_index")
      * @Template
-     * @AclAncestor("rockordier_festivalwarehouse_view")
+     * @AclAncestor("rockordier_warehouse_view")
      *
      * @return array
      */
     public function indexAction()
     {
         return ['gridName' => 'warehouse-grid'];
+    }
+
+    /**
+     * @Route("/view/{id}", name="rockordier_warehouse_view", requirements={"id"="\d+"}, defaults={"id"=0})
+     * @Acl(
+     *      id="rockordier_warehouse_view",
+     *      type="entity",
+     *      permission="VIEW",
+     *      class="FestivalWarehouseBundle:Warehouse"
+     * )
+     * @Template
+     *
+     * @param Warehouse $warehouse
+     * @return array
+     */
+    public function viewAction(Warehouse $warehouse)
+    {
+        return [ 'entity' => $warehouse ];
+    }
+
+    /**
+     * @Route("/create", name="rockordier_warehouse_create")
+     * @Template("FestivalWarehouseBundle:Warehouse:update.html.twig")
+     * @Acl(
+     *      id="rockordier_warehouse_create",
+     *      type="entity",
+     *      permission="CREATE",
+     *      class="FestivalWarehouseBundle:Warehouse"
+     * )
+     * @return array
+     */
+    public function createAction()
+    {
+        $entity = $this->getManager()->createEntity();
+
+        return $this->update($entity);
+    }
+
+    /**
+     * @Route("/update/{id}", name="rockordier_warehouse_update", requirements={"id"="\d+"}, defaults={"id"=0})
+     * @Template
+     * @Acl(
+     *      id="rockordier_warehouse_update",
+     *      type="entity",
+     *      permission="EDIT",
+     *      class="FestivalWarehouseBundle:Warehouse"
+     * )
+     *
+     * @param Warehouse $warehouse
+     * @return array
+     */
+    public function updateAction(Warehouse $warehouse)
+    {
+        return $this->update($warehouse);
+    }
+
+    /**
+     * @param Warehouse|null $entity
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    protected function update(Warehouse $entity = null)
+    {
+        if (!$entity) {
+            $entity = $this->getManager()->createEntity();
+        }
+
+        /** @TODO: Do Implementation */
+
+//        if ($this->get('rab_volunteer.form.handler.volunteer')->process($entity)) {
+//            $this->get('session')->getFlashBag()->add(
+//                'success',
+//                $this->get('translator')->trans('rab.volunteer.controller.volunteer.message.saved')
+//            );
+//
+//            return $this->get('oro_ui.router')->redirectAfterSave(
+//                ['route' => 'rab_volunteer_update', 'parameters' => ['id' => $entity->getId()]],
+//                ['route' => 'rab_volunteer_index'],
+//                $entity
+//            );
+//        }
+//
+//        return array(
+//            'entity'        => $entity,
+//            'form'          => $this->get('rab_volunteer.form.volunteer')->createView(),
+//        );
+
+    }
+
+    /**
+     * @return WarehouseManager
+     */
+    protected function getManager()
+    {
+        return $this->get('rockordier.warehouse.manager');
     }
 }

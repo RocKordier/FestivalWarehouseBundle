@@ -1,0 +1,9 @@
+parameters:
+  rockordier.warehouse.manager.class:            RocKordier\Bundle\FestivalWarehouseBundle\Entity\Manager\WarehouseManager
+  rockordier.warehouse.entity.class:             RocKordier\Bundle\FestivalWarehouseBundle\Entity\Warehouse
+
+services:
+  rockordier.warehouse.manager:
+    class: "%rockordier.warehouse.manager.class%"
+    arguments:
+      - "@doctrine.orm.entity_manager"
