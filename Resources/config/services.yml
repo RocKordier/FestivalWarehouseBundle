@@ -6,4 +6,5 @@ services:
   rockordier.warehouse.manager:
     class: "%rockordier.warehouse.manager.class%"
     arguments:
+      - "%%rockordier.warehouse.entity.class%"
       - "@doctrine.orm.entity_manager"
