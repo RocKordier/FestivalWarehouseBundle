@@ -27,7 +27,7 @@ oro_menu_config:
                 warehouses_tab: ~
 
 oro_titles:
-    orocrm_account_index: ~
-    orocrm_account_view: '%%warehouse%%'
-    orocrm_account_create: 'Create Waerehouse'
-    orocrm_account_update: '%%warehouse%% - Edit'
+    rockordier_warehouse_index: ~
+    rockordier_warehouse_view: '%%warehouse%%'
+    rockordier_warehouse_create: 'Create Waerehouse'
+    rockordier_warehouse_update: '%%warehouse%% - Edit'
