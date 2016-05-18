@@ -1,7 +1,7 @@
 datagrid:
     warehouse-grid:
+        acl_resource: rockordier_warehouse_view
         source:
-            acl_resource: rab_warehouse_view
             type: orm
             query:
                 select:
@@ -14,7 +14,7 @@ datagrid:
         columns:
             id:
                 label: id
-            title:
+            name:
                 label: 'Warehouse title'
             createdAt:
                 label: createdAt

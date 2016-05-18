@@ -33,6 +33,8 @@ class WarehouseController extends Controller
      */
     public function indexAction()
     {
+        $this->get('doctrine.orm.entity_manager')->getRepository('FestivalWarehouseBundle:Warehouse');
+
         return ['gridName' => 'warehouse-grid'];
     }
 
@@ -100,26 +102,23 @@ class WarehouseController extends Controller
             $entity = $this->getManager()->createEntity();
         }
 
-        /** @TODO: Do Implementation */
+        if($this->get('rockordier.warehouse.form.handler.warehouse')->process($entity)) {
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('rockordier.warehouse.controller.warehouse.message.saved')
+            );
 
-//        if ($this->get('rab_volunteer.form.handler.volunteer')->process($entity)) {
-//            $this->get('session')->getFlashBag()->add(
-//                'success',
-//                $this->get('translator')->trans('rab.volunteer.controller.volunteer.message.saved')
-//            );
-//
-//            return $this->get('oro_ui.router')->redirectAfterSave(
-//                ['route' => 'rab_volunteer_update', 'parameters' => ['id' => $entity->getId()]],
-//                ['route' => 'rab_volunteer_index'],
-//                $entity
-//            );
-//        }
-//
-//        return array(
-//            'entity'        => $entity,
-//            'form'          => $this->get('rab_volunteer.form.volunteer')->createView(),
-//        );
+            return $this->get('oro_ui.router')->redirectAfterSave(
+                ['route' => 'rockordier_warehouse_update', 'parameters' => ['id' => $entity->getId()]],
+                ['route' => 'rockordier_warehouse_index'],
+                $entity
+            );
+        }
 
+        return array(
+            'entity'        => $entity,
+            'form'          => $this->get('rockordier.warehouse.form.warehouse')->createView(),
+        );
     }
 
     /**

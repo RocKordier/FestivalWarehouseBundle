@@ -1,0 +1,24 @@
+parameters:
+    rockordier.warehouse.form.type.warehouse.class: RocKordier\Bundle\FestivalWarehouseBundle\Form\Type\WarehouseType
+    rockordier.warehouse.form.handler.warehouse.class: RocKordier\Bundle\FestivalWarehouseBundle\Form\Handler\WarehouseHandler
+
+services:
+    rockordier.warehouse.form.type:
+        class: "%rockordier.warehouse.form.type.warehouse.class%"
+        tags:
+            - { name: form.type, alias: rockordier_warehouse_warehouse }
+
+    rockordier.warehouse.form.warehouse:
+        class: Symfony\Component\Form\Form
+        factory: ["@form.factory", createNamed]
+        arguments:
+            - "rockordier_warehouse_warehouse_form"
+            - "rockordier_warehouse_warehouse"
+
+    rockordier.warehouse.form.handler.warehouse:
+        class: "%rockordier.warehouse.form.handler.warehouse.class%"
+        scope: request
+        arguments:
+            - "@rockordier.warehouse.form.warehouse"
+            - "@request"
+            - "@rockordier.warehouse.manager"
