@@ -1,0 +1,12 @@
+rockordier:
+    festivalwarehouse:
+        warehouse:
+            owner:
+                label: Owner
+    warehouse:
+        entity_label: Warehouse
+        entity_plural_label: Warehouses
+        controller:
+            warehouse:
+                message:
+                    saved: Warehouse saved
